@@ -1,0 +1,123 @@
+{
+  "source": "EU AI Act, Article 25 - Obligations of deployers that are also providers",
+  "note": "Three scenarios where a deployer becomes a provider, triggering full provider obligations under Articles 8-15. This is one of the most consequential provisions of the Act for organizations deploying third-party or GPAI systems.",
+  "scenarios": [
+    {
+      "id": "25_1_a",
+      "scenario_number": 1,
+      "short_name": "Rebranding",
+      "article_ref": "Article 25(1)(a)",
+      "trigger": "The deployer puts their name or trademark on a high-risk AI system already placed on the market or put into service, without prejudice to contractual arrangements stipulating that the obligations are otherwise allocated.",
+      "plain_english": "You take a vendor's AI product and slap your brand on it. You're now responsible as if you built it.",
+      "detection_keywords": ["rebrand", "white-label", "own brand", "trademark", "our name on", "relabel", "OEM", "private label", "co-brand", "branded as ours", "resell under our name", "label as our product"],
+      "detection_questions": [
+        "Is the AI system marketed under your organization's name or brand?",
+        "Do end users see your brand rather than the original provider's?",
+        "Have you white-labeled or relabeled the AI system?",
+        "Does the end user believe your organization built or developed the AI system?",
+        "Is the original provider's name absent from customer-facing materials?"
+      ],
+      "example": "A staffing company licenses a vendor's AI screening tool and offers it to clients under the staffing company's brand name.",
+      "risk_level": "HIGH - Full provider obligations apply immediately",
+      "common_in": ["HR tech resellers", "Financial services white-labeling", "Healthcare platform integrators", "SaaS platforms embedding third-party AI"],
+      "contractual_note": "Article 25(1)(a) allows obligations to be contractually reallocated. However, the branded entity remains the party regulators will hold accountable to end users."
+    },
+    {
+      "id": "25_1_b",
+      "scenario_number": 2,
+      "short_name": "Substantial Modification",
+      "article_ref": "Article 25(1)(b)",
+      "trigger": "The deployer makes a substantial modification to a high-risk AI system that is already on the market or in service.",
+      "plain_english": "You significantly change how the AI works — retrain it, change its architecture, modify its decision logic. You've now made a new system and you're the provider.",
+      "detection_keywords": ["fine-tune", "retrain", "modify", "customize model", "change architecture", "adapt weights", "transfer learning", "substantial modification", "custom training", "model adaptation", "domain adaptation", "re-train", "additional training", "modified decision logic", "changed thresholds", "recalibrated", "updated model weights"],
+      "detection_questions": [
+        "Have you retrained or fine-tuned the AI model on your own data?",
+        "Have you modified the model's architecture or decision logic?",
+        "Have you made changes that alter the AI system's performance or behavior beyond configuration?",
+        "Would the original provider consider your changes a 'substantial modification'?",
+        "Have you changed the model's output format, decision boundaries, or scoring thresholds in ways not anticipated by the provider?",
+        "Did you perform transfer learning or domain adaptation on the model?"
+      ],
+      "example": "A bank takes an open-source credit scoring model and fine-tunes it on their transaction data, changing its decision boundaries.",
+      "risk_level": "HIGH - Full provider obligations apply. The modification creates a new system.",
+      "common_in": ["Teams fine-tuning open-source models", "Organizations customizing vendor models", "Research teams adapting pre-trained models", "Data science teams retraining models on proprietary data"],
+      "note": "The distinction between configuration (changing parameters within provider-defined ranges) and substantial modification (changing the system beyond provider intent) is critical. EU Commission delegated acts on 'substantial modification' criteria are expected. Build flexibility for updated criteria.",
+      "substantial_vs_configuration": {
+        "substantial_modification_examples": [
+          "Retraining the model on new data sets",
+          "Changing the model architecture",
+          "Modifying the decision logic or algorithm",
+          "Changing the intended purpose of the system"
+        ],
+        "likely_not_substantial_examples": [
+          "Adjusting parameters within ranges defined by the provider",
+          "Updating the system as specified by the provider",
+          "Routine maintenance and bug fixes by the provider",
+          "Configuration changes explicitly supported in instructions for use"
+        ]
+      }
+    },
+    {
+      "id": "25_1_c",
+      "scenario_number": 3,
+      "short_name": "Modified Intended Purpose",
+      "article_ref": "Article 25(1)(c)",
+      "trigger": "The deployer modifies the intended purpose of an AI system, including a general purpose AI system, which has not been classified as high-risk, so that it becomes a high-risk AI system in accordance with Article 6.",
+      "plain_english": "You take a general-purpose AI tool (ChatGPT, Claude, Gemini, Copilot) and use it for something that falls under Annex III high-risk categories. The tool wasn't high-risk. Your USE of it made it high-risk. You're now the provider.",
+      "detection_keywords": ["use for", "apply to", "deploy for", "purpose", "chatgpt for hiring", "claude for credit", "copilot for screening", "general purpose", "GPAI", "repurpose", "use case", "we use it to decide", "we use it to evaluate", "we use it to score", "we use it to assess", "LLM for decisions", "foundation model for", "AI assistant for hiring", "AI assistant for credit", "AI assistant for insurance"],
+      "detection_questions": [
+        "Are you using a general-purpose AI system (ChatGPT, Claude, Gemini, Copilot, Llama, Mistral, etc.) for a task that falls under Annex III?",
+        "Is the AI system being used for a purpose different from what the original provider intended?",
+        "Does your use case involve decisions about people's access to employment, credit, education, essential services, or law enforcement?",
+        "Did the original GPAI provider's terms of use anticipate your specific use case?",
+        "Are AI outputs being used as inputs to decisions that produce legal effects or similarly significant effects on natural persons?",
+        "Is a general-purpose AI system being embedded in a workflow that evaluates, scores, ranks, or filters natural persons?"
+      ],
+      "example": "An HR team uses GPT-4 via API to screen resumes and rank candidates for engineering roles. GPT-4 is a general-purpose AI system. Resume screening falls under Annex III Category 4 (Employment). The HR team's use has made it high-risk.",
+      "risk_level": "CRITICAL - Most dangerous scenario. Organizations do this unknowingly. No detection mechanism exists in most companies.",
+      "common_in": ["Any organization using GPAI tools for HR, credit, insurance, education, or public services decisions", "Teams building internal tools on top of LLM APIs", "Business units experimenting with AI without governance review"],
+      "detection_gap": "Most organizations have no mechanism to detect this. Acceptable use policies say 'don't do bad things with AI.' They don't say 'if you use this chatbot to score candidates, you just made us a provider of a high-risk AI system under Article 25.'",
+      "gpai_terms_check": true,
+      "additional_examples": [
+        {
+          "use_case": "Using Claude API to evaluate employee performance reviews",
+          "annex_iii_category": "4b",
+          "why_triggers": "Employee performance evaluation falls under Annex III Point 4. Claude is a GPAI not classified as high-risk. Using it for performance evaluation modifies its intended purpose to a high-risk use."
+        },
+        {
+          "use_case": "Using Gemini to pre-screen insurance applications",
+          "annex_iii_category": "5b",
+          "why_triggers": "Insurance risk assessment for life/health falls under Annex III Point 5(b). Gemini is a GPAI. Deployer becomes provider."
+        },
+        {
+          "use_case": "Using GPT-4 to assess creditworthiness in loan applications",
+          "annex_iii_category": "5a",
+          "why_triggers": "Credit scoring of natural persons falls under Annex III Point 5(a). GPT-4 is a GPAI. Deployer becomes provider."
+        }
+      ]
+    }
+  ],
+  "consequences_of_becoming_provider": {
+    "summary": "When a deployer becomes a provider under Article 25, the former provider's obligations under Articles 8-15 and Article 47 transfer to the new provider. This is a FULL transfer of the compliance burden.",
+    "obligations_triggered": [
+      "Risk management system (Article 9)",
+      "Data governance and management (Article 10)",
+      "Technical documentation (Article 11)",
+      "Record-keeping / automatic logging (Article 12)",
+      "Transparency and provision of information to deployers (Article 13)",
+      "Human oversight measures (Article 14)",
+      "Accuracy, robustness and cybersecurity (Article 15)",
+      "Conformity assessment (Article 43)",
+      "EU declaration of conformity (Article 47)",
+      "CE marking (Article 48)",
+      "Registration in EU database (Article 49)"
+    ],
+    "original_provider_role": "The original provider must cooperate with the new provider, providing necessary information and reasonably expected technical access to facilitate compliance (Article 25(2)-(3)). The original provider is NOT released from their own obligations for the original system unless explicitly agreed.",
+    "penalties": {
+      "article_ref": "Article 99",
+      "non_compliance_with_high_risk_obligations": "Up to EUR 15,000,000 or 3% of total worldwide annual turnover, whichever is higher",
+      "note": "Penalties apply to the entity that became the provider under Article 25, not the original provider"
+    },
+    "timeline_urgency": "There is no grace period. Once a trigger condition is met, the deployer IS a provider immediately and must comply with all provider obligations. Retroactive compliance is expected."
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "source": "EU AI Act - Provider and Deployer Obligations",
+  "provider_obligations": [
+    {
+      "id": "P1",
+      "article": "Article 9",
+      "name": "Risk Management System",
+      "description": "Establish, implement, document and maintain a risk management system throughout the AI system's lifecycle.",
+      "key_requirements": [
+        "Identify and analyse known and reasonably foreseeable risks",
+        "Estimate and evaluate risks from intended use and reasonably foreseeable misuse",
+        "Adopt suitable risk management measures",
+        "Test the AI system to identify appropriate risk management measures",
+        "Risk management measures shall give due consideration to effects and possible interactions resulting from combined application of requirements"
+      ],
+      "priority": "critical",
+      "typical_gap": "No formal risk management system exists for the AI use case"
+    },
+    {
+      "id": "P2",
+      "article": "Article 10",
+      "name": "Data and Data Governance",
+      "description": "Training, validation and testing data sets shall be subject to appropriate data governance and management practices.",
+      "key_requirements": [
+        "Data governance policies covering data collection, preparation, and labeling",
+        "Examination for possible biases that are likely to affect health, safety, or fundamental rights",
+        "Identification of relevant data gaps or shortcomings",
+        "Appropriate statistical properties for the intended purpose",
+        "Consideration of geographic, contextual, behavioural, or functional setting",
+        "Data sets shall be relevant, sufficiently representative, and to the best extent possible free of errors and complete"
+      ],
+      "priority": "critical",
+      "typical_gap": "No data governance framework for AI training/evaluation data"
+    },
+    {
+      "id": "P3",
+      "article": "Article 11",
+      "name": "Technical Documentation",
+      "description": "Draw up technical documentation before the system is placed on the market or put into service, and keep it up to date.",
+      "key_requirements": [
+        "General description of the AI system",
+        "Detailed description of elements and development process",
+        "Monitoring, functioning and control of the AI system",
+        "Description of the risk management system",
+        "Description of changes made throughout lifecycle",
+        "Must comply with Annex IV content requirements",
+        "Technical documentation shall be drawn up in such a way as to demonstrate compliance"
+      ],
+      "priority": "critical",
+      "typical_gap": "Documentation exists for the model but not formatted per EU AI Act Annex IV requirements"
+    },
+    {
+      "id": "P4",
+      "article": "Article 12",
+      "name": "Record-Keeping / Automatic Logging",
+      "description": "High-risk AI systems shall technically allow for automatic recording of events (logs) throughout the lifetime of the system.",
+      "key_requirements": [
+        "Logging capabilities designed at development stage",
+        "Recording of period of each use (start date and time, reference database)",
+        "Recording of input data for which the search has led to a match",
+        "Identification of natural persons involved in verification of results",
+        "Logs shall be appropriate to the intended purpose and in accordance with recognized standards"
+      ],
+      "priority": "high",
+      "typical_gap": "System has application logs but not the specific logging required by the Act"
+    },
+    {
+      "id": "P5",
+      "article": "Article 13",
+      "name": "Transparency and Provision of Information to Deployers",
+      "description": "Designed and developed to ensure operations are sufficiently transparent to enable deployers to interpret output and use appropriately.",
+      "key_requirements": [
+        "Instructions for use in appropriate digital or non-digital format",
+        "Identity and contact details of provider",
+        "Characteristics, capabilities and limitations of performance including accuracy, robustness, cybersecurity",
+        "Changes to the system pre-determined by the provider at assessment time",
+        "Human oversight measures including technical measures to facilitate interpretation of outputs",
+        "Expected lifetime and necessary maintenance and care measures",
+        "Specifications for input data or other relevant information regarding training, validation and testing data sets"
+      ],
+      "priority": "high",
+      "typical_gap": "No formal instructions for use document exists"
+    },
+    {
+      "id": "P6",
+      "article": "Article 14",
+      "name": "Human Oversight",
+      "description": "Designed and developed to be effectively overseen by natural persons during the period of use.",
+      "key_requirements": [
+        "Human oversight measures identified and built in by the provider",
+        "Ability to fully understand capacities and limitations of the AI system",
+        "Ability to duly monitor operation and detect signs of anomalies, dysfunctions or unexpected performance",
+        "Ability to correctly interpret the AI system output",
+        "Ability to decide not to use the system or disregard, override or reverse its output",
+        "Ability to intervene in or interrupt the system through a stop button or similar procedure"
+      ],
+      "priority": "critical",
+      "typical_gap": "AI outputs are auto-accepted without human review mechanism"
+    },
+    {
+      "id": "P7",
+      "article": "Article 15",
+      "name": "Accuracy, Robustness and Cybersecurity",
+      "description": "Designed and developed to achieve an appropriate level of accuracy, robustness and cybersecurity and to perform consistently in those respects throughout their lifecycle.",
+      "key_requirements": [
+        "Appropriate level of accuracy declared and in instructions for use",
+        "Resilient against errors, faults, or inconsistencies within the system or its environment",
+        "Appropriate technical redundancy solutions including backup or fail-safe plans",
+        "Protected against unauthorized third-party manipulation of input or training data (data poisoning)",
+        "Resilient against attempts to alter use or performance by exploiting system vulnerabilities",
+        "Appropriate measures for relevant cybersecurity threats"
+      ],
+      "priority": "high",
+      "typical_gap": "No formal accuracy benchmarks or robustness testing documented"
+    },
+    {
+      "id": "P8",
+      "article": "Article 43",
+      "name": "Conformity Assessment",
+      "description": "Subject to a conformity assessment procedure before being placed on the market or put into service.",
+      "key_requirements": [
+        "Internal conformity assessment per Annex VI for most Annex III categories",
+        "Third-party conformity assessment (notified body) required for biometric systems under Annex III Point 1",
+        "New conformity assessment required if system is substantially modified",
+        "Assessment must be carried out before market placement"
+      ],
+      "priority": "critical",
+      "typical_gap": "No conformity assessment process exists or planned"
+    },
+    {
+      "id": "P9",
+      "article": "Article 47",
+      "name": "EU Declaration of Conformity",
+      "description": "Provider draws up a written or electronically signed EU declaration of conformity for each high-risk AI system and keeps it for 10 years after the system has been placed on the market or put into service.",
+      "key_requirements": [
+        "Declaration states system complies with requirements in Chapter III Section 2",
+        "Kept up to date",
+        "Made available to national competent authorities upon request",
+        "Content follows the template in Annex V",
+        "Translated into the language required by the Member State"
+      ],
+      "priority": "high",
+      "typical_gap": "No declaration exists or planned"
+    },
+    {
+      "id": "P10",
+      "article": "Article 49",
+      "name": "Registration in EU Database",
+      "description": "Provider or authorized representative registers the high-risk AI system in the EU database before placing on market or putting into service.",
+      "key_requirements": [
+        "Registration in the EU database referred to in Article 71",
+        "Must be done before market placement or putting into service",
+        "Deployers of high-risk AI systems must also register their use in the EU database"
+      ],
+      "priority": "high",
+      "typical_gap": "No awareness of EU database registration requirement"
+    }
+  ],
+  "deployer_obligations": [
+    {
+      "id": "D1",
+      "article": "Article 26(1)",
+      "name": "Use in Accordance with Instructions",
+      "description": "Use the AI system in accordance with the instructions of use accompanying the system.",
+      "key_requirements": [
+        "Follow provider's instructions for use",
+        "Ensure appropriate technical and organisational measures",
+        "Ensure input data is relevant to the intended purpose"
+      ],
+      "priority": "high",
+      "typical_gap": "No formal process to review and follow the provider's instructions for use"
+    },
+    {
+      "id": "D2",
+      "article": "Article 26(2)",
+      "name": "Human Oversight",
+      "description": "Assign human oversight to natural persons who have the necessary competence, training and authority.",
+      "key_requirements": [
+        "Designate competent natural persons for human oversight",
+        "Ensure those persons have necessary training",
+        "Ensure those persons have authority to override or disregard AI output"
+      ],
+      "priority": "critical",
+      "typical_gap": "No designated human oversight personnel with documented authority to override AI decisions"
+    },
+    {
+      "id": "D3",
+      "article": "Article 26(4)",
+      "name": "Input Data Relevance",
+      "description": "Ensure that input data is relevant and sufficiently representative in view of the intended purpose of the high-risk AI system, to the extent the deployer exercises control over the input data.",
+      "key_requirements": [
+        "Verify input data relevance for intended purpose",
+        "Ensure data is sufficiently representative",
+        "Applies to extent the deployer controls input data"
+      ],
+      "priority": "high",
+      "typical_gap": "No process to validate that input data meets the system's requirements for the intended purpose"
+    },
+    {
+      "id": "D4",
+      "article": "Article 26(5)",
+      "name": "Monitoring",
+      "description": "Monitor the operation of the high-risk AI system on the basis of the instructions for use and inform the provider or distributor of any serious incident or malfunctioning.",
+      "key_requirements": [
+        "Monitor operation per instructions for use",
+        "Report serious incidents to the provider",
+        "Suspend use upon identification of a serious risk",
+        "Inform provider/distributor and relevant market surveillance authority of serious incidents"
+      ],
+      "priority": "high",
+      "typical_gap": "No monitoring process aligned with provider instructions; no incident reporting procedure"
+    },
+    {
+      "id": "D5",
+      "article": "Article 26(6)",
+      "name": "Record Keeping",
+      "description": "Keep logs automatically generated by the high-risk AI system, to the extent such logs are under their control, for a period appropriate to the intended purpose of the high-risk AI system, of at least six months.",
+      "key_requirements": [
+        "Retain automatically generated logs",
+        "Minimum retention period of six months",
+        "Logs must be under the deployer's control",
+        "Retention period must be appropriate to intended purpose and applicable legal obligations"
+      ],
+      "priority": "medium",
+      "typical_gap": "Logs not retained or retention period not defined; AI system logs not separated from general application logs"
+    },
+    {
+      "id": "D6",
+      "article": "Article 26(7)",
+      "name": "Inform Workers",
+      "description": "Inform workers' representatives and affected workers that they will be subject to the use of the high-risk AI system before putting it into service or using it in the workplace.",
+      "key_requirements": [
+        "Notify workers' representatives before deployment",
+        "Notify affected workers before deployment",
+        "Provide information about the AI system's use in the workplace"
+      ],
+      "priority": "high",
+      "typical_gap": "No process to notify workers or worker representatives about AI system deployment"
+    },
+    {
+      "id": "D7",
+      "article": "Article 26(11)",
+      "name": "Data Protection Impact Assessment",
+      "description": "Use information provided under Article 13 to comply with obligation to carry out a data protection impact assessment under Article 35 of GDPR or Article 27 of the Law Enforcement Directive.",
+      "key_requirements": [
+        "Carry out DPIA where applicable under GDPR Article 35",
+        "Use the provider's Article 13 information as input",
+        "Document DPIA results"
+      ],
+      "priority": "high",
+      "typical_gap": "DPIA not conducted or not updated for the AI system use case"
+    },
+    {
+      "id": "D8",
+      "article": "Article 27",
+      "name": "Fundamental Rights Impact Assessment",
+      "description": "Before putting a high-risk AI system into use, deployers that are bodies governed by public law or private entities providing public services, and deployers using systems under Annex III points 5(b) and 5(d), shall perform an assessment of the impact on fundamental rights.",
+      "key_requirements": [
+        "Describe the deployer's processes where the AI system will be used",
+        "Describe the period of time and frequency in which the AI system will be used",
+        "Describe the categories of natural persons and groups likely to be affected",
+        "Describe the specific risks of harm likely to impact identified categories of persons or groups",
+        "Description of the implementation of human oversight measures",
+        "Description of measures to be taken in case of materialization of risks",
+        "Notify the market surveillance authority of the results",
+        "Must be performed before the system is put into use"
+      ],
+      "applies_to": ["Public bodies", "Private entities providing public services", "Deployers using systems under Annex III points 5(b) and 5(d)"],
+      "priority": "critical",
+      "typical_gap": "No fundamental rights impact assessment process exists; organization does not recognize it applies to them"
+    }
+  ],
+  "transparency_obligations": {
+    "article": "Article 50",
+    "applies_to": "AI systems that interact with people, generate synthetic content, or perform emotion recognition / biometric categorisation. These apply regardless of risk level.",
+    "requirements": [
+      {
+        "id": "T1",
+        "trigger": "AI system designed to directly interact with natural persons",
+        "obligation": "Inform the natural person that they are interacting with an AI system, unless this is obvious from the circumstances and context of use. The information shall be provided in a clear and distinguishable manner at the latest at the time of the first interaction.",
+        "applies_to": "Provider",
+        "example": "Customer service chatbot must disclose it is AI at the start of conversation"
+      },
+      {
+        "id": "T2",
+        "trigger": "AI system generates synthetic audio, image, video, or text content",
+        "obligation": "Mark the output as artificially generated or manipulated in a machine-readable format. Outputs shall be detectable as artificially generated or manipulated.",
+        "applies_to": "Provider",
+        "example": "AI-generated marketing copy must be labeled; deepfake videos must carry metadata marking"
+      },
+      {
+        "id": "T3",
+        "trigger": "Emotion recognition system or biometric categorisation system",
+        "obligation": "Inform the natural persons exposed thereto of the operation of the system and process personal data in accordance with GDPR, the Law Enforcement Directive, and other applicable Union law.",
+        "applies_to": "Deployer",
+        "example": "Must disclose if scanning faces for emotional response in a retail store"
+      },
+      {
+        "id": "T4",
+        "trigger": "AI system generates or manipulates image, audio or video content constituting a deep fake",
+        "obligation": "Disclose that the content has been artificially generated or manipulated. Does not apply where use is authorised by law for detection, prevention, investigation or prosecution of criminal offences.",
+        "applies_to": "Deployer",
+        "example": "A marketing team using AI-generated spokesperson videos must disclose they are AI-generated"
+      }
+    ]
+  }
+}

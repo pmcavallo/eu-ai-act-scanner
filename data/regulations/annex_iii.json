@@ -1,0 +1,199 @@
+{
+  "source": "EU AI Act, Annex III - High-Risk AI Systems",
+  "effective_date": "2026-08-02",
+  "note": "Systems referred to in Article 6(2). High-risk classification applies when the AI system is used in any of these areas. Subject to the conditions in Article 6(3) — a system listed here is NOT high-risk if it does not pose a significant risk of harm to health, safety or fundamental rights.",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Biometrics",
+      "article_ref": "Annex III, Point 1",
+      "subcategories": [
+        {
+          "id": "1a",
+          "description": "Remote biometric identification systems, excluding AI systems intended to be used for biometric verification the sole purpose of which is to confirm that a specific natural person is the person they claim to be",
+          "keywords": ["facial recognition", "biometric identification", "identity verification at a distance", "real-time identification", "remote identification", "face matching", "biometric database", "one-to-many matching", "identification in public spaces"],
+          "exclusion": "Biometric verification (one-to-one confirmation that a person is who they claim to be) is excluded",
+          "examples": ["AI system that identifies individuals in a crowd from CCTV footage", "Facial recognition for building access that compares against a database of all employees", "Airport gate system that scans faces against a watchlist"]
+        },
+        {
+          "id": "1b",
+          "description": "AI systems intended to be used for biometric categorisation, according to sensitive or protected attributes or characteristics based on the inference of those attributes or characteristics",
+          "keywords": ["emotion recognition", "biometric categorisation", "sentiment analysis from face", "demographic inference", "affect recognition", "mood detection", "racial categorization", "gender inference", "age estimation from biometrics"],
+          "examples": ["System that infers emotional state from facial expressions during job interviews", "Tool that categorizes people by ethnicity from photos", "Workplace camera system analyzing employee mood"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Critical Infrastructure",
+      "article_ref": "Annex III, Point 2",
+      "subcategories": [
+        {
+          "id": "2a",
+          "description": "AI systems intended to be used as safety components in the management and operation of critical digital infrastructure, road traffic, or in the supply of water, gas, heating and electricity",
+          "keywords": ["power grid", "water supply", "traffic management", "digital infrastructure", "energy management", "utility operations", "road traffic safety", "gas supply", "heating systems", "electricity distribution", "smart grid", "SCADA", "traffic signal", "transport safety", "railway management", "air traffic"],
+          "examples": ["AI controlling power grid load balancing", "Traffic signal optimization system", "Water treatment plant monitoring AI", "Smart grid demand forecasting system", "Railway safety monitoring AI"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Education and Vocational Training",
+      "article_ref": "Annex III, Point 3",
+      "subcategories": [
+        {
+          "id": "3a",
+          "description": "AI systems intended to be used to determine access to or admission to or to assign natural persons to educational and vocational training institutions at all levels",
+          "keywords": ["admissions", "enrollment", "student selection", "university admission", "school placement", "course assignment", "student allocation", "educational access", "training program selection", "scholarship allocation"],
+          "examples": ["AI that ranks university applicants", "Automated admissions screening tool", "Student placement algorithm", "Scholarship eligibility scoring system"]
+        },
+        {
+          "id": "3b",
+          "description": "AI systems intended to be used to evaluate learning outcomes, including when those outcomes are used to steer the learning process",
+          "keywords": ["grading", "assessment", "exam scoring", "learning evaluation", "academic performance", "student progression", "automated grading", "competency assessment", "adaptive learning", "learning analytics"],
+          "examples": ["Automated essay grading system", "AI that determines student progression", "Adaptive learning system that gates content based on AI assessment", "AI that assigns final grades in a course"]
+        },
+        {
+          "id": "3c",
+          "description": "AI systems intended to be used for the purpose of monitoring and detecting prohibited behaviour of students during tests",
+          "keywords": ["proctoring", "cheating detection", "exam monitoring", "student surveillance", "test integrity", "online proctoring", "exam supervision", "academic integrity monitoring"],
+          "examples": ["AI-powered exam proctoring software", "Plagiarism detection with behavioral analysis", "Eye-tracking system that flags suspicious behavior during online exams"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Employment, Workers Management and Access to Self-Employment",
+      "article_ref": "Annex III, Point 4",
+      "subcategories": [
+        {
+          "id": "4a",
+          "description": "AI systems intended to be used for the recruitment or selection of natural persons, in particular to place targeted job advertisements, to analyse and filter job applications, and to evaluate candidates",
+          "keywords": ["recruitment", "hiring", "resume screening", "candidate evaluation", "job application filtering", "talent acquisition", "ATS screening", "CV screening", "candidate ranking", "interview scoring", "job matching", "applicant tracking", "candidate shortlisting", "targeted job ads", "hiring algorithm"],
+          "examples": ["AI that screens resumes and ranks candidates", "Automated interview scoring", "Job ad targeting based on candidate profiles", "Chatbot that pre-screens applicants", "Video interview analysis tool that scores candidates"]
+        },
+        {
+          "id": "4b",
+          "description": "AI systems intended to be used to make or substantially influence decisions affecting terms of work-related relationships, promotion and termination of work-related contractual relationships, to allocate tasks based on individual behaviour or personal traits or characteristics, or to monitor and evaluate the performance and behaviour of persons in such relationships",
+          "keywords": ["performance evaluation", "promotion decisions", "termination", "task allocation", "employee monitoring", "workforce management", "productivity tracking", "performance review", "worker surveillance", "schedule optimization", "layoff scoring", "PIP scoring", "engagement scoring", "attrition prediction", "workforce analytics"],
+          "examples": ["AI-driven performance review system", "Automated task assignment based on employee profiling", "System that flags employees for termination risk", "Productivity monitoring tool that tracks keystrokes and mouse movements", "AI that recommends promotion or demotion"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Access to and Enjoyment of Essential Private Services and Public Services and Benefits",
+      "article_ref": "Annex III, Point 5",
+      "subcategories": [
+        {
+          "id": "5a",
+          "description": "AI systems intended to be used to evaluate the creditworthiness of natural persons or establish their credit score, with the exception of AI systems used for the purpose of detecting financial fraud",
+          "keywords": ["credit scoring", "creditworthiness", "credit risk", "loan approval", "credit assessment", "lending decisions", "mortgage approval", "credit decision", "credit evaluation", "loan origination", "loan underwriting", "credit application", "debt capacity", "repayment risk", "default prediction"],
+          "fraud_detection_exclusion": {
+            "note": "AI systems used for the purpose of detecting financial fraud are explicitly EXCLUDED from this high-risk category. Fraud detection is NOT high-risk under Category 5a.",
+            "article_ref": "Annex III, Point 5(a) — '...with the exception of AI systems used for the purpose of detecting financial fraud'",
+            "excluded_keywords": ["fraud detection", "fraud prevention", "anti-fraud", "transaction monitoring for fraud", "fraudulent transaction detection", "anti-money laundering"],
+            "boundary_warning": "If a system does BOTH credit scoring AND fraud detection, the credit scoring component is still high-risk. Only the pure fraud detection function is excluded."
+          },
+          "examples": ["AI credit scoring model", "Automated loan approval system", "Credit risk assessment tool", "Mortgage pre-qualification AI", "Consumer lending decision engine"]
+        },
+        {
+          "id": "5b",
+          "description": "AI systems intended to be used for risk assessment and pricing in relation to natural persons in the case of life and health insurance",
+          "keywords": ["insurance pricing", "insurance risk assessment", "health insurance", "life insurance", "actuarial AI", "underwriting", "insurance underwriting", "premium calculation", "insurance scoring", "health risk scoring", "mortality prediction"],
+          "scope_note": "Applies only to life and health insurance. Property, casualty, and auto insurance are NOT covered by this subcategory.",
+          "examples": ["AI that sets health insurance premiums", "Automated life insurance underwriting", "Risk scoring for insurance applicants", "AI that adjusts life insurance pricing based on health data"]
+        },
+        {
+          "id": "5c",
+          "description": "AI systems intended to be used to evaluate and classify emergency calls by natural persons or to dispatch or establish priority for the dispatching of emergency first response services, including by police and firefighting, medical aid and rescue helicopters, and in the triage and prioritisation of patients in emergency healthcare",
+          "keywords": ["emergency dispatch", "911", "triage", "emergency classification", "first response priority", "emergency triage", "patient prioritisation", "emergency call classification", "ambulance dispatch", "emergency room triage", "999 calls", "112 calls"],
+          "examples": ["AI that prioritizes emergency calls", "Emergency triage system", "Automated dispatch routing", "Emergency room patient triage AI"]
+        },
+        {
+          "id": "5d",
+          "description": "AI systems intended to be used to evaluate the eligibility of natural persons for public assistance benefits and services, to grant, reduce, revoke or reclaim such benefits and services, or to allocate or manage public housing",
+          "keywords": ["social benefits", "public assistance", "welfare", "public housing", "benefits eligibility", "social services", "welfare assessment", "housing allocation", "benefits determination", "social security assessment", "unemployment benefits", "disability assessment"],
+          "examples": ["AI that determines welfare eligibility", "Automated benefits assessment", "Public housing allocation system", "System that decides disability benefit claims"]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Law Enforcement",
+      "article_ref": "Annex III, Point 6",
+      "subcategories": [
+        {
+          "id": "6a",
+          "description": "AI systems intended to be used by or on behalf of law enforcement authorities, or by Union institutions, bodies, offices or agencies in support of law enforcement authorities, to assess the risk of a natural person for offending or reoffending or the risk for potential victims of criminal offences",
+          "keywords": ["recidivism prediction", "crime risk assessment", "victim risk assessment", "predictive policing individual", "offender risk scoring", "re-offending risk", "criminal risk assessment"],
+          "examples": ["Recidivism prediction tool", "Individual threat assessment AI", "Victim risk assessment tool used by law enforcement"]
+        },
+        {
+          "id": "6b",
+          "description": "AI systems intended to be used by or on behalf of law enforcement authorities, or by Union institutions, bodies, offices or agencies, as polygraphs and similar tools",
+          "keywords": ["lie detection", "polygraph", "deception detection", "credibility assessment", "truthfulness assessment", "interrogation AI"],
+          "examples": ["AI-powered lie detector", "Deception analysis tool for interrogations", "Voice stress analysis for credibility assessment"]
+        },
+        {
+          "id": "6c",
+          "description": "AI systems intended to be used by or on behalf of law enforcement authorities, or by Union institutions, bodies, offices or agencies, to evaluate the reliability of evidence in the course of investigation or prosecution of criminal offences",
+          "keywords": ["evidence evaluation", "forensic AI", "evidence reliability", "digital forensics", "evidence analysis", "forensic evidence scoring"],
+          "examples": ["AI that assesses forensic evidence reliability", "Digital forensics analysis tool", "Evidence chain-of-custody verification AI"]
+        },
+        {
+          "id": "6d",
+          "description": "AI systems intended to be used by or on behalf of law enforcement authorities, or by Union institutions, bodies, offices or agencies, for predicting the occurrence or reoccurrence of an actual or potential criminal offence based on profiling of natural persons or assessing personality traits and characteristics or past criminal behaviour",
+          "keywords": ["predictive policing", "crime prediction", "criminal profiling", "crime hotspot prediction", "crime forecasting", "personality-based prediction"],
+          "examples": ["Predictive policing system", "Crime hotspot prediction AI", "Criminal behavior forecasting tool"]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Migration, Asylum and Border Control Management",
+      "article_ref": "Annex III, Point 7",
+      "subcategories": [
+        {
+          "id": "7a",
+          "description": "AI systems intended to be used by or on behalf of competent public authorities, or by Union institutions, bodies, offices or agencies, as polygraphs and similar tools to assess the risk, including a security risk, a risk of irregular migration, or a health risk, posed by a natural person who intends to enter or has entered the territory of a Member State",
+          "keywords": ["border risk assessment", "immigration screening", "migration risk", "security assessment", "irregular migration risk", "health risk border", "entry risk assessment", "traveler risk scoring"],
+          "examples": ["Border control risk scoring system", "Immigration application risk assessment", "Traveler risk profiling at border entry points"]
+        },
+        {
+          "id": "7b",
+          "description": "AI systems intended to be used by or on behalf of competent public authorities, or by Union institutions, bodies, offices or agencies, to assist competent public authorities for the examination of applications for asylum, visa and residence permits and associated complaints with regard to the eligibility of the natural persons applying for a status",
+          "keywords": ["asylum processing", "visa assessment", "residence permit", "immigration application", "asylum claim", "visa decision", "refugee status determination", "immigration eligibility"],
+          "examples": ["AI-assisted visa application review", "Asylum claim processing tool", "Refugee status determination support system"]
+        },
+        {
+          "id": "7c",
+          "description": "AI systems intended to be used by or on behalf of competent public authorities, or by Union institutions, bodies, offices or agencies, in the context of migration, asylum and border control management, for the purpose of detecting, recognising or identifying natural persons, with the exception of verification of travel documents",
+          "keywords": ["border identification", "migrant detection", "border surveillance", "migrant identification", "border biometric identification", "migration monitoring"],
+          "exclusion": "Verification of travel documents is excluded",
+          "examples": ["Border surveillance AI", "Migrant identification system", "AI-powered border patrol detection system"]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Administration of Justice and Democratic Processes",
+      "article_ref": "Annex III, Point 8",
+      "subcategories": [
+        {
+          "id": "8a",
+          "description": "AI systems intended to be used by a judicial authority or on their behalf to assist a judicial authority in researching and interpreting facts and the law and in applying the law to a concrete set of facts, or to be used in a similar way in alternative dispute resolution",
+          "keywords": ["legal research AI", "judicial decision support", "sentencing", "dispute resolution", "legal analysis", "court decision support", "judicial AI", "case law analysis", "sentencing recommendation", "alternative dispute resolution AI", "legal reasoning"],
+          "examples": ["AI that assists judges with sentencing recommendations", "Legal research tool used by courts", "Automated dispute resolution system", "AI that analyzes case law to suggest rulings"]
+        },
+        {
+          "id": "8b",
+          "description": "AI systems intended to be used for influencing the outcome of an election or referendum or the voting behaviour of natural persons in the exercise of their vote in elections or referenda. This does not include AI systems to whose output natural persons are not directly exposed, such as tools used to organise, optimise and structure political campaigns from an administrative and logistical point of view",
+          "keywords": ["election influence", "voter targeting", "political campaign AI", "referendum influence", "voter behavior prediction", "political micro-targeting", "vote manipulation", "election interference"],
+          "exclusion": "AI used purely for administrative/logistical organization of political campaigns is excluded (e.g., scheduling, logistics optimization)",
+          "examples": ["AI-driven political micro-targeting of voters", "Voter behavior prediction and influence system", "System that generates personalized political messaging to influence voting"]
+        }
+      ]
+    }
+  ]
+}
