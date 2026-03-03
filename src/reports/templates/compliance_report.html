@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act Compliance Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }
+
+        /* Risk Banner */
+        .risk-banner {
+            background: {{ risk_color }};
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .risk-banner h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .risk-banner .risk-level { font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; }
+
+        /* Sections */
+        .section { padding: 1.5rem 2rem; border-bottom: 1px solid #dee2e6; }
+        .section:last-child { border-bottom: none; }
+        .section h2 { font-size: 1.2rem; color: #343a40; margin-bottom: 1rem; border-bottom: 2px solid #dee2e6; padding-bottom: 0.5rem; }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.2em 0.6em;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .badge-critical { background: #dc3545; }
+        .badge-high { background: #fd7e14; }
+        .badge-medium { background: #ffc107; color: #212529; }
+        .badge-low { background: #28a745; }
+        .badge-not-met { background: #dc3545; }
+        .badge-partially-met { background: #ffc107; color: #212529; }
+        .badge-met { background: #28a745; }
+
+        /* Summary grid */
+        .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .summary-item { background: #f8f9fa; padding: 1rem; border-radius: 6px; }
+        .summary-item .label { font-size: 0.8rem; color: #6c757d; text-transform: uppercase; letter-spacing: 0.05em; }
+        .summary-item .value { font-size: 1.1rem; font-weight: 600; margin-top: 0.25rem; }
+
+        /* Table */
+        .gap-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        .gap-table th { background: #f8f9fa; text-align: left; padding: 0.75rem; font-size: 0.85rem; color: #495057; border-bottom: 2px solid #dee2e6; }
+        .gap-table td { padding: 0.75rem; border-bottom: 1px solid #dee2e6; font-size: 0.9rem; vertical-align: top; }
+        .gap-table tr:last-child td { border-bottom: none; }
+        .action-list { margin: 0.5rem 0 0 1rem; padding: 0; }
+        .action-list li { font-size: 0.85rem; color: #495057; margin-bottom: 0.25rem; }
+
+        /* Next steps */
+        .next-steps { list-style: none; counter-reset: step-counter; padding: 0; }
+        .next-steps li {
+            counter-increment: step-counter;
+            padding: 0.75rem 0 0.75rem 2.5rem;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .next-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background: #e9ecef;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #495057;
+        }
+        .next-steps li:last-child { border-bottom: none; }
+
+        /* Article 25 alert */
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        .alert-danger { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .alert-warning { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; }
+        .alert-info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+
+        /* Score indicator */
+        .score-bar { height: 8px; background: #e9ecef; border-radius: 4px; margin-top: 0.5rem; overflow: hidden; }
+        .score-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+
+        /* Footer */
+        .footer { padding: 1rem 2rem; background: #f8f9fa; font-size: 0.8rem; color: #6c757d; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Risk Banner -->
+    <div class="risk-banner">
+        <h1>EU AI Act Compliance Report</h1>
+        <div class="risk-level">{{ risk_label }}</div>
+    </div>
+
+    <!-- Section 1: Risk Classification Summary -->
+    <div class="section">
+        <h2>Risk Classification Summary</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="label">Risk Level</div>
+                <div class="value">
+                    <span class="badge" style="background: {{ risk_color }}; {% if report.classification.risk_level.value == 'limited_risk' %}color: #212529;{% endif %}">
+                        {{ risk_label }}
+                    </span>
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="label">Organization Role</div>
+                <div class="value">{{ role_label }}</div>
+            </div>
+            {% if report.classification.annex_iii_match %}
+            <div class="summary-item">
+                <div class="label">Annex III Category</div>
+                <div class="value">{{ report.classification.annex_iii_match.subcategory_id }}: {{ report.classification.annex_iii_match.category_name }}</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">Classification Confidence</div>
+                <div class="value">{{ "%.0f"|format(report.classification.annex_iii_match.confidence * 100) }}%</div>
+            </div>
+            {% endif %}
+            <div class="summary-item">
+                <div class="label">Risk Score</div>
+                <div class="value">{{ "%.0f"|format(report.risk_score) }} / 100</div>
+                <div class="score-bar">
+                    <div class="score-fill" style="width: {{ report.risk_score }}%; background: {{ risk_color }};"></div>
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="label">Obligations</div>
+                <div class="value">{{ report.obligations_met }} of {{ report.total_obligations }} met</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Article 25 Analysis -->
+    {% if report.classification.article_25_trigger %}
+    <div class="section">
+        <h2>Article 25 Analysis: Deployer-to-Provider Role Shift</h2>
+        <div class="alert alert-danger">
+            <strong>Role Shift Triggered:</strong> {{ report.classification.article_25_trigger.article_ref if report.classification.article_25_trigger.article_ref is defined else "Article 25(1)(" + "abc"[report.classification.article_25_trigger.scenario_number - 1] + ")" }}
+            &mdash; {{ report.classification.article_25_trigger.short_name }}
+        </div>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="label">Scenario</div>
+                <div class="value">{{ report.classification.article_25_trigger.short_name }}</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">Confidence</div>
+                <div class="value">{{ "%.0f"|format(report.classification.article_25_trigger.confidence * 100) }}%</div>
+            </div>
+        </div>
+        <p style="margin-top: 1rem;">
+            <strong>Reasoning:</strong> {{ report.classification.article_25_trigger.reasoning }}
+        </p>
+        <p style="margin-top: 0.75rem; color: #721c24;">
+            <strong>Consequence:</strong> Your organization now bears full provider obligations under Articles 8&ndash;15 and Article 47.
+            The original provider must cooperate and provide necessary information (Article 25(2)).
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- Section 3: GPAI Terms Check -->
+    {% if report.classification.gpai_terms_check %}
+    <div class="section">
+        <h2>GPAI Provider Terms Check</h2>
+        {% if report.classification.gpai_terms_check.terms_violated %}
+        <div class="alert alert-danger">
+            <strong>Terms Violation Detected:</strong> Your use of {{ report.classification.gpai_terms_check.provider_name }}
+            {% if report.classification.gpai_terms_check.product_used %}({{ report.classification.gpai_terms_check.product_used }}){% endif %}
+            may violate the provider's acceptable use policy.
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            No terms violations detected for {{ report.classification.gpai_terms_check.provider_name }}
+            {% if report.classification.gpai_terms_check.product_used %}({{ report.classification.gpai_terms_check.product_used }}){% endif %}.
+        </div>
+        {% endif %}
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="label">Provider</div>
+                <div class="value">{{ report.classification.gpai_terms_check.provider_name }}</div>
+            </div>
+            {% if report.classification.gpai_terms_check.product_used %}
+            <div class="summary-item">
+                <div class="label">Product</div>
+                <div class="value">{{ report.classification.gpai_terms_check.product_used }}</div>
+            </div>
+            {% endif %}
+        </div>
+        {% if report.classification.gpai_terms_check.violated_terms %}
+        <div style="margin-top: 1rem;">
+            <strong>Violated Terms:</strong>
+            <ul class="action-list">
+                {% for term in report.classification.gpai_terms_check.violated_terms %}
+                <li>{{ term }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if report.classification.gpai_terms_check.reasoning %}
+        <p style="margin-top: 0.75rem;"><strong>Analysis:</strong> {{ report.classification.gpai_terms_check.reasoning }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Section 4: Executive Summary -->
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <p>{{ report.executive_summary }}</p>
+    </div>
+
+    <!-- Section 5: Compliance Gap Table -->
+    {% if report.obligation_gaps %}
+    <div class="section">
+        <h2>Compliance Gap Analysis</h2>
+        <table class="gap-table">
+            <thead>
+                <tr>
+                    <th>Obligation</th>
+                    <th>Article</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Action Items</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gap in report.obligation_gaps %}
+                <tr>
+                    <td><strong>{{ gap.obligation_id }}</strong>: {{ gap.name }}</td>
+                    <td>{{ gap.article }}</td>
+                    <td>
+                        <span class="badge badge-{{ gap.priority.value }}">{{ gap.priority.value }}</span>
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ gap.status | replace('_', '-') }}">{{ gap.status | replace('_', ' ') }}</span>
+                    </td>
+                    <td>
+                        {% if gap.action_items %}
+                        <ul class="action-list">
+                            {% for item in gap.action_items %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        &mdash;
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Section 6: Prioritized Next Steps -->
+    <div class="section">
+        <h2>Prioritized Next Steps</h2>
+        <ol class="next-steps">
+            {% for step in report.next_steps %}
+            <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <!-- Section 7: Footer -->
+    <div class="footer">
+        <p>Generated: {{ report.generated_at }}</p>
+        <p>Generated by EU AI Act Compliance Scanner. All scenarios use synthetic/simulated data.</p>
+    </div>
+
+</div>
+</body>
+</html>
