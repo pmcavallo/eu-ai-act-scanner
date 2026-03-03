@@ -1,0 +1,100 @@
+{
+  "test_scenarios": [
+    {
+      "id": "TS01",
+      "name": "HR Resume Screening with ChatGPT",
+      "description": "Our HR team uses GPT-4 via API to screen resumes and rank candidates for engineering roles. We built custom prompts and connected it to our ATS.",
+      "expected_risk_level": "high_risk",
+      "expected_annex_iii_category": "4a",
+      "expected_role": "provider",
+      "expected_article_25_scenario": "25_1_c",
+      "expected_gpai_provider": "openai",
+      "expected_terms_violation": true,
+      "notes": "Classic Scenario 3. GPAI used for high-risk purpose (employment screening)."
+    },
+    {
+      "id": "TS02",
+      "name": "Bank Uses Vendor Credit Scoring As-Is",
+      "description": "We purchased a credit scoring AI system from a specialized vendor. We use it exactly as provided, with no modifications, to assess consumer loan applications.",
+      "expected_risk_level": "high_risk",
+      "expected_annex_iii_category": "5a",
+      "expected_role": "deployer",
+      "expected_article_25_scenario": null,
+      "expected_gpai_provider": null,
+      "expected_terms_violation": false,
+      "notes": "Clear deployer case. Using vendor system as intended for its intended high-risk purpose."
+    },
+    {
+      "id": "TS03",
+      "name": "Company Rebrands AI Hiring Tool",
+      "description": "We license an AI-powered hiring assessment tool from a vendor. We offer it to our clients under our company brand name as part of our HR services platform.",
+      "expected_risk_level": "high_risk",
+      "expected_annex_iii_category": "4a",
+      "expected_role": "provider",
+      "expected_article_25_scenario": "25_1_a",
+      "expected_gpai_provider": null,
+      "expected_terms_violation": false,
+      "notes": "Scenario 1. Rebranding a high-risk system puts your name on it."
+    },
+    {
+      "id": "TS04",
+      "name": "Fine-Tuned Open-Source Fraud Model",
+      "description": "Our data science team took an open-source transaction classification model and fine-tuned it on our own transaction data to detect fraudulent patterns. We deployed it in our payment processing pipeline.",
+      "expected_risk_level": "not_high_risk",
+      "expected_annex_iii_category": null,
+      "expected_role": "provider",
+      "expected_article_25_scenario": "25_1_b",
+      "expected_gpai_provider": null,
+      "expected_terms_violation": false,
+      "notes": "Scenario 2. Substantial modification. However, fraud detection is explicitly EXCLUDED from Annex III Category 5a. Provider status from modification but not high-risk classification."
+    },
+    {
+      "id": "TS05",
+      "name": "Marketing Copywriting with Claude",
+      "description": "Our marketing team uses Claude to draft email campaigns and social media posts. A human reviews and edits all content before publishing.",
+      "expected_risk_level": "limited_risk",
+      "expected_annex_iii_category": null,
+      "expected_role": "deployer",
+      "expected_article_25_scenario": null,
+      "expected_gpai_provider": "anthropic",
+      "expected_terms_violation": false,
+      "notes": "Not high-risk. Article 50 transparency obligation for AI-generated content may apply."
+    },
+    {
+      "id": "TS06",
+      "name": "University Admissions Chatbot",
+      "description": "Our university built a chatbot using Gemini API that evaluates student applications, scores essays, and provides preliminary admission recommendations to the admissions committee.",
+      "expected_risk_level": "high_risk",
+      "expected_annex_iii_category": "3a",
+      "expected_role": "provider",
+      "expected_article_25_scenario": "25_1_c",
+      "expected_gpai_provider": "google",
+      "expected_terms_violation": true,
+      "notes": "Scenario 3. GPAI used for education access decisions. Oliver Patel's example."
+    },
+    {
+      "id": "TS07",
+      "name": "Hospital Triage with GPAI",
+      "description": "Our emergency department uses GPT-4 to help triage incoming patients. Nurses input symptoms and the system suggests priority levels and preliminary assessments. A doctor reviews all triage decisions.",
+      "expected_risk_level": "high_risk",
+      "expected_annex_iii_category": "5c",
+      "expected_role": "provider",
+      "expected_article_25_scenario": "25_1_c",
+      "expected_gpai_provider": "openai",
+      "expected_terms_violation": true,
+      "notes": "Scenario 3. GPAI used for emergency triage classification. Human oversight exists but role shift still applies."
+    },
+    {
+      "id": "TS08",
+      "name": "Customer Service Chatbot No Decisions",
+      "description": "We deployed a customer service chatbot built on Claude that answers product questions and routes complex issues to human agents. It does not make any decisions about customers or their accounts.",
+      "expected_risk_level": "limited_risk",
+      "expected_annex_iii_category": null,
+      "expected_role": "deployer",
+      "expected_article_25_scenario": null,
+      "expected_gpai_provider": "anthropic",
+      "expected_terms_violation": false,
+      "notes": "Not high-risk. Article 50 transparency obligation applies (must disclose AI interaction)."
+    }
+  ]
+}
